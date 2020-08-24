@@ -1,25 +1,23 @@
 <template>
-  <div class="home">
-    
-    <h1>Добро пожаловать!</h1>
-    <h2>Найдите forks по репозиторию</h2>
-	<br>
-    <input placeholder="owner/repositoryName" v-model='message' />
-   
- 	<router-link to="/res"><button type="submit" @click="FetchPosts(message, '1')">Поиск</button></router-link>
+  <div class="res">
+    <h1>Результаты поиска:</h1>
+   	<br>
+    <input v-model='message' />
+    <button type="submit" placeholder="owner/repositoryName" @click="FetchPosts(message, '1')">Поиск</button>
+    <PostForm></PostForm>
   </div>
-    
 </template>
 
-<script>
 
+<script>
 import { mapGetters, mapActions, mapState } from 'vuex'
+import PostForm from '@/components/PostForm.vue'
 import store from '../store'
 
-
 export default {
-  	name: 'Home',
+  	name: 'Search',
   	store,
+	components: { PostForm },
 	    computed: {
 	        message: {
 	            get () {
